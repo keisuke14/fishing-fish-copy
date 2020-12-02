@@ -23,7 +23,9 @@ Things you may want to cover:
 
 * ...
 
-# fishing&fish
+
+# アプリケーション名
+　fishing&fish
 
 ## サイト概要
 　近畿で釣りをする人や、これから釣りをするがどこでするかを探している人が利用するサイト。
