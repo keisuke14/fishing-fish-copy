@@ -47,10 +47,10 @@ Things you may want to cover:
 https://docs.google.com/spreadsheets/d/1gr0RfuiK9xV_cGh2lEHIh4CAD_nu4tbJW4m0D1l_Lho/edit#gid=0
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- IDE：Cloud9
+ OS：Linux(CentOS)
+ 言語：HTML,CSS,Ruby,SQL
+ フレームワーク：Ruby on Rails
+ IDE：Cloud9
 
 ## 使用素材
 Yahoo!ロコ
