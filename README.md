@@ -46,7 +46,7 @@ Things you may want to cover:
 　近畿で釣りをする場所を探したり、主に釣れる魚の概要を見たりする。
 
 ### 機能一覧
-　
+  https://docs.google.com/spreadsheets/d/1gr0RfuiK9xV_cGh2lEHIh4CAD_nu4tbJW4m0D1l_Lho/edit#gid=0
 
 ## 開発環境
  OS：Linux(CentOS)
