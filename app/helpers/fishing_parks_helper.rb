@@ -1,0 +1,2 @@
+module FishingParksHelper
+end
