@@ -26,19 +26,33 @@ class FishingParksController < ApplicationController
   end
 
   def update
+    @fishing_park = FishingPark.find(params[:id])
+    if @fishing_park.update(fishing_park_params)
+      redirect_to fishing_parks_path(current_user)
+    else
+      render 'edit'
+    end
   end
+
+  def destroy
+    # @fishing_park = FishingPark.user
+    @fishing_park = FishingPark.find(params[:id])
+    @fishing_park.destroy!
+    redirect_to fishing_parks_path
+  end
+
 end
 
   private
   def fishing_park_params
-    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image)
+    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image, :tour_fee, :children_tour_fee)
   end
 
-  def user_admin
-    @fishing_park = FishingPark.find(params[:id])
-    if  current_user.admin == false
-      redirect_to root_path
-    else
-        render action: "index"
-    end
-  end
+  # def user_admin
+  #   @fishing_park = FishingPark.find(params[:id])
+  #   if  current_user.admin == false
+  #     redirect_to root_path
+  #   else
+  #       render action: "index"
+  #   end
+  # end

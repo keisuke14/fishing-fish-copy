@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_060317) do
+ActiveRecord::Schema.define(version: 2020_12_08_151105) do
 
   create_table "fishing_parks", force: :cascade do |t|
     t.string "image_id"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2020_12_08_060317) do
     t.datetime "updated_at", null: false
     t.string "address"
     t.string "name"
-    t.integer "fee"
-    t.integer "children_fee"
+    t.string "children_fee"
+    t.string "fee"
+    t.string "tour_fee"
+    t.string "children_tour_fee"
   end
 
   create_table "users", force: :cascade do |t|
