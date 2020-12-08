@@ -1,0 +1,18 @@
+ <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= form_with model: @fishing_park, local:true do |f| %>
+          <label>image</label><br>
+            <p><%= f.attachment_field :image %></p>
+          <label>address</label>
+            <p><%= f.text_field :address %></p>
+          <label>name</label>
+            <p><%= f.text_field :name %></p>
+           <label>fee</label>
+            <p><%= f.text_field :fee %></p>
+          <label>children_fee</label>
+            <p><%= f.text_field :children_fee %></p>
+          <%= f.submit 'Update' %>
+        <% end %>
+     <% end %>
+    <% end %>
+  </div>

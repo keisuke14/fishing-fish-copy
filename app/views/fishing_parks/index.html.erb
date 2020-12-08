@@ -1,0 +1,51 @@
+  <div class="container"><br><br><br><br>
+    <h1>海釣り公園一覧</h1><br><br>
+    <div class="col-md-12">
+      <% @fishing_parks.each do |fishing_park| %>
+          <%= link_to fishing_park_path(current_user) do %>
+        <div class="col-6 col-md-3">
+          <%= attachment_image_tag fishing_park, :image, size:'200x200' %>
+        </div>
+          <div style="height: 40px;">
+            <p><h4><%= fishing_park.name %></p></h4>
+          </div>
+          <div style="height: 40px;">
+            <p><h4><%= fishing_park.address %></p></h4>
+          </div>
+          <div style="height: 40px;">
+            <p><h4><%= fishing_park.fee %></p></h4>
+          </div>
+          <div style="height: 40px;">
+            <p><h4><%= fishing_park.children_fee %></p></h4>
+          </div>
+
+          <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <%= link_to "編集", edit_fishing_park_path(current_user) %>
+              <% end %>
+            <% end %>
+          <hr>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container"><br>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= form_with model: @fishing_park, local:true do |f| %>
+          <label>image</label><br>
+            <p><%= f.attachment_field :image %></p>
+          <label>address</label>
+            <p><%= f.text_field :address %></p>
+          <label>name</label>
+            <p><%= f.text_field :name %></p>
+           <label>fee</label>
+            <p><%= f.text_field :fee %></p>
+          <label>children_fee</label>
+            <p><%= f.text_field :children_fee %></p>
+          <%= f.submit 'Create' %>
+        <% end %>
+     <% end %>
+    <% end %>
+  </div>
