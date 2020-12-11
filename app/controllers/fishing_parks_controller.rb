@@ -1,6 +1,11 @@
 class FishingParksController < ApplicationController
   before_action :authenticate_user!
 
+  def search
+    @word = params[:search_word]
+    @fishing_parks = FishingPark.search(@word)
+  end
+
 
   def new
     @fishing_park = FishingPark.new
@@ -19,6 +24,7 @@ class FishingParksController < ApplicationController
 
   def show
     @fishing_park = FishingPark.find(params[:id])
+    @review = Review.new
   end
 
   def edit
@@ -45,7 +51,7 @@ end
 
   private
   def fishing_park_params
-    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image, :tour_fee, :children_tour_fee)
+    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image, :tour_fee, :children_tour_fee, :body)
   end
 
   # def user_admin

@@ -1,0 +1,10 @@
+  <% if current_user.favorited_by?(fishing_park.id) %><br><br>
+  <!--remote: trueでJavascriptを呼び出す-->
+    <span>いいね</span>
+    <%= link_to '', favorites_path(fishing_park_id: fishing_park.id), method: :delete, class: "glyphicon glyphicon-heart", remote: true %>
+    <%= fishing_park.favorites.count%>
+  <% else %>
+    <span>いいね</span>
+    <%= link_to '', favorites_path(fishing_park_id: fishing_park.id), method: :post, class: "glyphicon glyphicon-heart-empty", remote: true %>
+    <%= fishing_park.favorites.count%>
+  <% end %>

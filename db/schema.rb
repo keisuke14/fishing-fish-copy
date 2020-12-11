@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_151105) do
+ActiveRecord::Schema.define(version: 2020_12_10_062005) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "fishing_park_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "fishing_parks", force: :cascade do |t|
     t.string "image_id"
@@ -23,6 +30,17 @@ ActiveRecord::Schema.define(version: 2020_12_08_151105) do
     t.string "fee"
     t.string "tour_fee"
     t.string "children_tour_fee"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "fishing_park_id"
+    t.string "content"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fishing_park_id"], name: "index_reviews_on_fishing_park_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

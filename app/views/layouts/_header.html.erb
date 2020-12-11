@@ -16,7 +16,12 @@
           <li><%= link_to 'Top', root_path, class: "btn btn-default navbar-btn" %></li>
           <li><%= link_to '新規登録', new_user_registration_path, class: "btn btn-default navbar-btn"%></li>
           <li><%= link_to 'ログイン', new_user_session_path, class: "btn btn-default navbar-btn"%></li>
-
+        <% end %>
+        <% if user_signed_in? %>
+          <%= form_with url: search_fishing_parks_path, method: :get, local: true do |f| %>
+            <%= text_field_tag :search_word %>
+            <%= submit_tag '検索', :name => nil %>
+          <% end %>
         <% end %>
       </ul>
     </nav>

@@ -1,4 +1,4 @@
-  <div class="container"><br><br><br><br>
+  <div class="container"><br><br><br><br><br>
     <h1>海釣り公園一覧</h1><br><br>
     <div>
       <% @fishing_parks.each do |fishing_park| %>
@@ -7,14 +7,14 @@
             <div class="col-md-3">
               <%= attachment_image_tag fishing_park, :image, size:'180x180' %>
             </div>
-            <div class="col-md-6">
-              <div style="height: 30px;">
+            <div class="col-md-5">
+              <div style="height: 40px;">
                 <p><h4>名称 ： <%= fishing_park.name %></p></h4>
               </div>
-              <div style="height: 30px;">
+              <div style="height: 40px;">
                 <p><h4>住所 ： <%= fishing_park.address %></p></h4>
               </div>
-              <div style="height: 30px;">
+              <div style="height: 40px;">
                 <h4>料金</h4>
                 <p><h4><%= fishing_park.fee %></p></h4>
               </div>
@@ -22,21 +22,25 @@
                 <p><h4><%= fishing_park.children_fee %></p></h4>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div style="height: 40px;">
                 <h4>入園料(見学の人)</h4>
                 <p><h4><%= fishing_park.tour_fee %></p></h4>
                 <p><h4><%= fishing_park.children_tour_fee %></p></h4>
               </div>
-              <% end %>
-              <% if user_signed_in? %>
-                <% if current_user.admin? %><br><br><br><br><br>
-                  <%= link_to "編集", edit_fishing_park_path(fishing_park.id) %>
-                  <%= link_to "削除する", fishing_park_path(fishing_park.id), method: :delete, "data-confirm" => "削除しますか？" %>
-                <% end %>
-              <% end %>
             </div>
+          <% end %><br><br><br><br><br>
+
+          <div id="favorite_<%= fishing_park.id %>">
+             <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: fishing_park} %>
           </div>
+
+          <% if user_signed_in? %><br><br>
+            <% if current_user.admin? %>
+              <%= link_to "編集", edit_fishing_park_path(fishing_park.id) %>
+              <%= link_to "削除する", fishing_park_path(fishing_park.id), method: :delete, "data-confirm" => "削除しますか？" %>
+            <% end %>
+          <% end %>
         </div>
         <hr>
       <% end %>
@@ -60,6 +64,8 @@
             <p><%= f.text_field :tour_fee %></p>
           <label>children_tour_fee</label>
             <p><%= f.text_field :children_tour_fee %></p>
+          <label>URL</label>
+            <p><%= f.text_field :body %></p>
           <%= f.submit 'Create' %>
         <% end %>
      <% end %>

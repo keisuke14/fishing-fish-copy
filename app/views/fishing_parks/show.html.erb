@@ -1,2 +1,50 @@
-<!--<div class="text-center"><br><br><br><br><br><br>-->
-    <!--<h3><strong><%= @fishing_park.name %></strong></h3>-->
+  <div class="text-center"><br><br><br><br><br><br>
+  <!--indexの情報を@fishing_parkでもってくる-->
+    <h1><%= @fishing_park.name %></h1><br><br>
+    <div class="row">
+      <div class="col-md-3">
+        <%= attachment_image_tag @fishing_park, :image, size:'180x180' %>
+      </div>
+      <div class="col-md-5">
+        <div style="height: 30px;">
+          <p><h4>名称 ： <%= @fishing_park.name %></p></h4>
+        </div><hr><br>
+        <div style="height: 30px;">
+          <p><h4>住所 ： <%= @fishing_park.address %></p></h4>
+        </div><br><hr>
+        <div style="height: 30px;">
+          <h4>料金</h4>
+          <p><h4><%= @fishing_park.fee %></p></h4>
+        </div>
+        <div style="height: 50px;"><br>
+          <p><h4><%= @fishing_park.children_fee %></p></h4>
+        </div><hr>
+        <div style="height: 40px;">
+          <h4>入園料(見学の人)</h4>
+          <p><h4><%= @fishing_park.tour_fee %></p></h4>
+          <p><h4><%= @fishing_park.children_tour_fee %></p></h4><hr>
+        </div>
+        <div style="height: 40px;"><br><br><br><br>
+          <p><h4><%= link_to 'この海釣り公園のホームページへ', @fishing_park.body, target: :_blank %></p></h4><hr>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <!----ログインしているユーザーか確認--->
+        <% if current_user.favorited_by?(@fishing_park.id) %>
+          <span>いいね</span>
+          <%= link_to '', favorites_path(fishing_park_id: @fishing_park.id), method: :delete, class: "glyphicon glyphicon-heart" %>
+          <!----いいねのカウントを記述--->
+          <%= @fishing_park.favorites.count%>
+        <% else %>
+          <span>いいね</span>
+          <%= link_to '', favorites_path(fishing_park_id: @fishing_park.id), method: :post, class: "glyphicon glyphicon-heart-empty" %>
+          <%= @fishing_park.favorites.count%>
+        <% end %><hr><br><br><br><br><br><br>
+
+
+        <!----評価レビューをrenderで部分テンプレート--->
+        <%= render 'reviews/form', review: @review, fishing_park: @fishing_park %>
+
+      </div>
+    </div>
+  </div>
