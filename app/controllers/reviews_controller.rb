@@ -1,18 +1,22 @@
 class ReviewsController < ApplicationController
-  def index
-  end
 
   def create
     @review = Review.new(review_params)
     # 送られてきた情報を格納する
     @review.user_id = current_user.id
     if @review.save
-      redirect_to fishing_park_reviews_path(@review.fishing_park)
+      redirect_to fishing_park_path(@review.fishing_park)
     else
       # renderはアクションを返さないため変数が足りているかを確認する
       @fishing_park = FishingPark.find(params[:fishing_park_id])
       render "fishing_parks/show"
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy!
+    redirect_to fishing_park_path
   end
 
   private

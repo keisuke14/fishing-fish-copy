@@ -1,11 +1,11 @@
-  <div class="text-center"><br><br><br><br><br><br>
+  <div class="text-center"><br><br><br><br><br><br><br><br>
   <!--indexの情報を@fishing_parkでもってくる-->
-    <h1><%= @fishing_park.name %></h1><br><br>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2"><br><br><br><br><br><br>
         <%= attachment_image_tag @fishing_park, :image, size:'180x180' %>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-6">
+        <h1><%= @fishing_park.name %></h1><br><br>
         <div style="height: 30px;">
           <p><h4>名称 ： <%= @fishing_park.name %></p></h4>
         </div><hr><br>
@@ -28,18 +28,12 @@
           <p><h4><%= link_to 'この海釣り公園のホームページへ', @fishing_park.body, target: :_blank %></p></h4><hr>
         </div>
       </div>
-      <div class="col-md-3">
-        <!----ログインしているユーザーか確認--->
-        <% if current_user.favorited_by?(@fishing_park.id) %>
-          <span>いいね</span>
-          <%= link_to '', favorites_path(fishing_park_id: @fishing_park.id), method: :delete, class: "glyphicon glyphicon-heart" %>
-          <!----いいねのカウントを記述--->
-          <%= @fishing_park.favorites.count%>
-        <% else %>
-          <span>いいね</span>
-          <%= link_to '', favorites_path(fishing_park_id: @fishing_park.id), method: :post, class: "glyphicon glyphicon-heart-empty" %>
-          <%= @fishing_park.favorites.count%>
-        <% end %><hr><br><br><br><br><br><br>
+      <div class="col-md-4">
+
+      <!--renderでいいね機能を部分テンプレート-->
+       <div id="favorite_<%= @fishing_park.id %>"><br><br><br><br><br><br>
+          <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: @fishing_park} %>
+        </div><hr><br><br><br><br><br><br>
 
 
         <!----評価レビューをrenderで部分テンプレート--->

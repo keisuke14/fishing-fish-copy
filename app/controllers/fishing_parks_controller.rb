@@ -1,6 +1,10 @@
 class FishingParksController < ApplicationController
   before_action :authenticate_user!
 
+  def rank
+    @all_ranks = FishingPark.find(Favorite.group(:fishing_park_id).order('count(fishing_park_id) desc').limit(8).pluck(:fishing_park_id))
+  end
+
   def search
     @word = params[:search_word]
     @fishing_parks = FishingPark.search(@word)
@@ -20,11 +24,14 @@ class FishingParksController < ApplicationController
   def index
     @fishing_parks = FishingPark.all
     @fishing_park = FishingPark.new
+    # kaminariでページ機能をつけるための記述
+    @fishing_parks = FishingPark.page(params[:page]).reverse_order
   end
 
   def show
     @fishing_park = FishingPark.find(params[:id])
     @review = Review.new
+    @reviews = Review.all
   end
 
   def edit

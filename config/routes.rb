@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
 
   resources :fishing_parks do
+    get :rank, on: :collection
     get :search, on: :collection
-    resources :reviews, only: [:index, :create]
+    resources :reviews, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :destroy, :update]
