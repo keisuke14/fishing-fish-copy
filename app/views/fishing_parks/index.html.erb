@@ -28,8 +28,8 @@
               <p><h4><%= fishing_park.children_tour_fee %></p></h4>
             </div>
           </div>
-        <% end %><br><br><br><br>
-        
+        <% end %><br><br>
+
         <!--renderでいいね機能を部分テンプレート-->
         <div id="favorite_<%= fishing_park.id %>"><br><br><br><br>
            <%= render partial: 'favorite', locals: { fishing_park: fishing_park} %>

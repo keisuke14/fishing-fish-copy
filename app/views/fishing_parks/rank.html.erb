@@ -1,43 +1,48 @@
-  <% @all_ranks.each do |fishing_park| %>
-    <div class="row">
-      <%= link_to fishing_park_path(fishing_park.id) do %>
-        <div class="col-md-3">
-          <%= attachment_image_tag fishing_park, :image, size:'180x180' %>
-        </div>
-        <div class="col-md-5">
-          <div style="height: 40px;">
-            <p><h4>名称 ： <%= fishing_park.name %></p></h4>
+  <div class="container"><br><br><br><br><br>
+    <h1>いいね多いランキング</h1><br>
+  </div>
+  <div class="text-center"><br><br>
+    <% @all_ranks.each do |fishing_park| %>
+      <div class="row">
+        <%= link_to fishing_park_path(fishing_park.id) do %>
+          <div class="col-md-3">
+            <%= attachment_image_tag fishing_park, :image, size:'180x180' %>
           </div>
-          <div style="height: 40px;">
-            <p><h4>住所 ： <%= fishing_park.address %></p></h4>
+          <div class="col-md-5">
+            <div style="height: 40px;">
+              <p><h4>名称 ： <%= fishing_park.name %></p></h4>
+            </div>
+            <div style="height: 40px;">
+              <p><h4>住所 ： <%= fishing_park.address %></p></h4>
+            </div>
+            <div style="height: 40px;">
+              <h4>料金</h4>
+              <p><h4><%= fishing_park.fee %></p></h4>
+            </div>
+            <div style="height: 50px;"><br>
+              <p><h4><%= fishing_park.children_fee %></p></h4>
+            </div>
           </div>
-          <div style="height: 40px;">
-            <h4>料金</h4>
-            <p><h4><%= fishing_park.fee %></p></h4>
+          <div class="col-md-4">
+            <div style="height: 50px;">
+              <h4>入園料(見学の人)</h4>
+              <p><h4><%= fishing_park.tour_fee %></p></h4>
+              <p><h4><%= fishing_park.children_tour_fee %></p></h4>
+            </div>
           </div>
-          <div style="height: 50px;"><br>
-            <p><h4><%= fishing_park.children_fee %></p></h4>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div style="height: 40px;">
-            <h4>入園料(見学の人)</h4>
-            <p><h4><%= fishing_park.tour_fee %></p></h4>
-            <p><h4><%= fishing_park.children_tour_fee %></p></h4>
-          </div>
-        </div>
-      <% end %><br><br><br><br>
+        <% end %><br><br>
 
-      <div id="favorite_<%= fishing_park.id %>"><br><br><br><br>
-         <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: fishing_park} %>
-      </div>
+        <div id="favorite_<%= fishing_park.id %>"><br><br><br>
+           <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: fishing_park} %>
+        </div>
 
-      <% if user_signed_in? %><br><br>
-        <% if current_user.admin? %>
-          <%= link_to "編集", edit_fishing_park_path(fishing_park.id) %>
-          <%= link_to "削除する", fishing_park_path(fishing_park.id), method: :delete, "data-confirm" => "削除しますか？" %>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %><br>
+            <%= link_to "編集", edit_fishing_park_path(fishing_park.id) %>
+            <%= link_to "削除する", fishing_park_path(fishing_park.id), method: :delete, "data-confirm" => "削除しますか？" %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <hr>
-  <% end %>
+      </div>
+      <hr>
+    <% end %>
+  </div>

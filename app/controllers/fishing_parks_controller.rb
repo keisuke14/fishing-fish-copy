@@ -2,6 +2,7 @@ class FishingParksController < ApplicationController
   before_action :authenticate_user!
 
   def rank
+    #番号の多い順に並び替え、表示する最大数を8個に指定する。最後にpluckでfishing_park_idカラムのみを数字で取り出すように指定。
     @all_ranks = FishingPark.find(Favorite.group(:fishing_park_id).order('count(fishing_park_id) desc').limit(8).pluck(:fishing_park_id))
   end
 

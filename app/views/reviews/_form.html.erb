@@ -37,14 +37,10 @@
   </div>
 
   <% @reviews.each do |review| %>
-  <table>
-    
-    <tr>
       <th>評価</th>
       <th><%= review.score %></th>
       <th>内容</th>
       <th><%= review.content %></th>
-    </tr>
     <%= link_to "削除", fishing_park_review_path(review), method: :delete, "data-confirm" => "削除しますか？" %>
   </table>
   <% end %>
