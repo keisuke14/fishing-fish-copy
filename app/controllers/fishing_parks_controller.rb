@@ -32,7 +32,7 @@ class FishingParksController < ApplicationController
   def show
     @fishing_park = FishingPark.find(params[:id])
     @review = Review.new
-    @reviews = Review.all
+    @reviews = @fishing_park.reviews
   end
 
   def edit
@@ -59,7 +59,7 @@ end
 
   private
   def fishing_park_params
-    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image, :tour_fee, :children_tour_fee, :body)
+    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image, :map_image, :tour_fee, :children_tour_fee, :body, :map_body)
   end
 
   # def user_admin

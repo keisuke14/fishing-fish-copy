@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_062005) do
+ActiveRecord::Schema.define(version: 2020_12_13_121336) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2020_12_10_062005) do
     t.string "fee"
     t.string "tour_fee"
     t.string "children_tour_fee"
+    t.string "map_iamge_id"
+    t.string "map_image_id"
+    t.text "map_body"
   end
 
   create_table "reviews", force: :cascade do |t|

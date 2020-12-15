@@ -28,10 +28,10 @@
               <p><h4><%= fishing_park.children_tour_fee %></p></h4>
             </div>
           </div>
-        <% end %><br><br>
+        <% end %><br><br><br><br><br><br><br>
 
         <!--renderでいいね機能を部分テンプレート-->
-        <div id="favorite_<%= fishing_park.id %>"><br><br><br><br>
+        <div id="favorite_<%= fishing_park.id %>">
            <%= render partial: 'favorite', locals: { fishing_park: fishing_park} %>
         </div>
 
@@ -69,6 +69,10 @@
             <p><%= f.text_field :children_tour_fee %></p>
           <label>URL</label>
             <p><%= f.text_field :body %></p>
+          <label>Map:URL</label>
+            <p><%= f.text_field :map_body %></p>
+          <label>image</label><br>
+            <p><%= f.attachment_field :map_image %></p>
           <%= f.submit 'Create' %>
         <% end %>
      <% end %>

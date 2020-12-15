@@ -1,4 +1,4 @@
-<div class="container"><br><br><br><br><br>
+  <div class="container"><br><br><br><br><br>
     <h1>海釣り公園検索結果</h1><br><br>
     <div>
       <% @fishing_parks.each do |fishing_park| %>
@@ -30,13 +30,10 @@
               </div>
               <% end %><br><br><br><br><br>
 
-              <% if current_user.favorited_by?(fishing_park.id) %>
-                <%= link_to '', favorites_path(fishing_park.id), method: :delete, class: "glyphicon glyphicon-heart" %>
-                <%= current_user.favorites.count%>
-              <% else %>
-                <%= link_to '', favorites_path(fishing_park.id), method: :post, class: "glyphicon glyphicon-heart-empty" %>
-                <%= current_user.favorites.count%>
-              <% end %>
+              <!--renderでいいね機能を部分テンプレート-->
+              <div id="favorite_<%= fishing_park.id %>">
+                 <%= render partial: 'favorite', locals: { fishing_park: fishing_park} %>
+              </div>
 
               <% if user_signed_in? %>
                 <% if current_user.admin? %><br><br><br>

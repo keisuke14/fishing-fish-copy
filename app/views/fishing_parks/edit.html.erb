@@ -21,6 +21,10 @@
                 <p><%= f.text_field :children_tour_fee %></p>
               <label>URL</label>
                 <p><%= f.text_field :body %></p>
+              <label>Map:URL</label>
+                <p><%= f.text_field :map_body %></p>
+              <label>image</label><br>
+                <p><%= f.attachment_field :map_image %></p>
               <%= f.submit 'Update' %>
             <% end %>
         <% end %>

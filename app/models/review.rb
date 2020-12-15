@@ -4,5 +4,6 @@ class Review < ApplicationRecord
   
   # 評価を必須にする
   validates :score, presence: true
+  validates :content, presence: true
   
 end
