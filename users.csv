@@ -1,0 +1,3 @@
+id,email,encrypted_password,name,reset_password_token,reset_password_sent_at,remember_created_at,created_at,updated_at,admin
+1,test@test,$2a$12$VGshJ5v4PhcYUR9h4CD68.Ebt.vd/VmCSHwGVOWkkMoEAQIoWfVWe,test,,,,"2020-12-16 04:43:36.696667","2020-12-16 04:48:44.413432",1
+2,doo@doo,$2a$12$fuZti5PDt9OYpBYAj3FDO.pkyRyr9izAykrIGWdM.urTrtDIIJbTq,doo,,,,"2020-12-16 04:47:11.303176","2020-12-16 04:47:11.303176",0
