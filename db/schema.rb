@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2020_12_16_101513) do
     t.string "map_image_id"
     t.text "map_body"
     t.text "fish_body"
-    t.string "map_iamge_id"
     t.string "fishing_fee"
     t.string "fishing_children_fee"
   end

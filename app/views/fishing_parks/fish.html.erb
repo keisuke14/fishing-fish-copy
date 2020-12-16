@@ -72,7 +72,7 @@
           <% if current_user.admin? %>
             <%= form_with model: @fishing_park, local:true do |f| %>
               <label>fishURL</label><br>
-                    <p><%= f.text_field :fish_body %></p>
+                <p><%= f.text_field :fish_body %></p>
               <%= f.submit 'Create' %>
             <% end %>
          <% end %>
