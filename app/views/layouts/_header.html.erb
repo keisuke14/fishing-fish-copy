@@ -8,7 +8,7 @@
         <% if user_signed_in? %>
           <li><%= link_to 'マイページ', user_path(current_user), class: "btn btn-default navbar-btn" %></li>
           <li><%= link_to '釣り一覧', fishing_parks_path, class: "btn btn-default navbar-btn" %></li>
-          <li><%= link_to '魚一覧', index_path, class: "btn btn-default navbar-btn" %></li>
+          <li><%= link_to '魚一覧', fish_fishing_park_path(current_user), class: "btn btn-default navbar-btn" %></li>
            <li><%= link_to 'ランキング', rank_fishing_parks_path(current_user), class: "btn btn-default navbar-btn" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn" %></li>
         <% else %>

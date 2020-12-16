@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   root 'home#top'
   get '/home/about' => 'home#about', as: 'about'
   get '/users/quit' => 'users#quit', as: 'quit'
-  get '/fishes/index' => 'fishes#index', as: 'index'
+  
 
 
   resources :fishing_parks do
+    get :fish, on: :member
     get :rank, on: :collection
     get :search, on: :collection
     resources :reviews, only: [:create, :destroy]

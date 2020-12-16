@@ -15,10 +15,10 @@
             </div>
             <div style="height: 40px;">
               <h4>料金</h4>
-              <p><h4><%= fishing_park.fee %></p></h4>
+              <p><h4><%= fishing_park.fishing_fee %></p></h4>
             </div>
             <div style="height: 50px;"><br>
-              <p><h4><%= fishing_park.children_fee %></p></h4>
+              <p><h4><%= fishing_park.fishing_children_fee %></p></h4>
             </div>
           </div>
           <div class="col-md-4">
@@ -59,15 +59,15 @@
             <p><%= f.text_field :address %></p>
           <label>name</label>
             <p><%= f.text_field :name %></p>
-           <label>fee</label>
-            <p><%= f.text_field :fee %></p>
-          <label>children_fee</label>
-            <p><%= f.text_field :children_fee %></p>
+           <label>fishing_fee</label>
+            <p><%= f.text_field :fishing_fee %></p>
+          <label>fishing_children_fee</label>
+            <p><%= f.text_field :fishing_children_fee %></p>
           <label>tour_fee</label>
             <p><%= f.text_field :tour_fee %></p>
           <label>children_tour_fee</label>
             <p><%= f.text_field :children_tour_fee %></p>
-          <label>URL</label>
+          <label>サイトURL</label>
             <p><%= f.text_field :body %></p>
           <label>Map:URL</label>
             <p><%= f.text_field :map_body %></p>

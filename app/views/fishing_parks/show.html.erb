@@ -1,50 +1,36 @@
-  <div><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br>
   <!--indexの情報を@fishing_parkでもってくる-->
-    <div class="row">
-      <div class="col-md-3"><br><br><br><br>
-      <div style ='margin-left:100px'>
-        <%= attachment_image_tag @fishing_park, :image, size:'260x260' %><br><br><br><br>
+  <div class="container-fluid">
+  	<div class="row sampleRow">
+  		<div class="col-xs-12 col-md-3">
+        <div style ='margin-left:100px'>
+          <%= attachment_image_tag @fishing_park, :image, size:'260x260' %>
+          <!--renderでいいね機能を部分テンプレート-->
+          <div id="favorite_<%= @fishing_park.id %>">
+            <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: @fishing_park} %>
+          </div>
+          <hr>
+        </div>
+  		</div>
+  		<div class="col-xs-12 col-md-9">
 
-        <!--renderでいいね機能を部分テンプレート-->
-        <div id="favorite_<%= @fishing_park.id %>">
-          <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: @fishing_park} %>
-        </div><hr>
-      </div>
-      </div>
-      <div class="col-md-6 text-center">
-        <h1><%= @fishing_park.name %></h1><br><br>
-        <div style="height: 30px;">
-          <p><h4>名称 ： <%= @fishing_park.name %></p></h4>
-        </div><hr><br>
-        <div style="height: 30px;">
-          <p><h4>住所 ： <%= @fishing_park.address %></p></h4>
-        </div><br><hr>
-        <div style="height: 30px;">
-          <h4>料金</h4>
-          <p><h4><%= @fishing_park.fee %></p></h4>
-        </div>
-        <div style="height: 50px;"><br>
-          <p><h4><%= @fishing_park.children_fee %></p></h4>
-        </div><hr>
-        <div style="height: 40px;">
-          <h4>入園料(見学の人)</h4>
-          <div><h4><%= @fishing_park.tour_fee %></h4></div>
-          <div><h4><%= @fishing_park.children_tour_fee %></h4></div><hr>
-          <div><h4><%= link_to 'この海釣り公園のホームページへ', @fishing_park.body, target: :_blank %></h4></div><hr>
-        </div>
+  		<div class="col-md-6 text-center">
+        <h1><%= @fishing_park.name %></h1>
+        <p>名称 ： <%= @fishing_park.name %></p>
+        <hr>
+        <p>住所 ： <%= @fishing_park.address %></p>
+        <hr>
+        <p>料金</p>
+        <p><%= @fishing_park.fishing_fee %></p>
+        <p><%= @fishing_park.fishing_children_fee %></p>
+        <hr>
+        <p>入園料(見学の人)</p>
+        <p><%= @fishing_park.tour_fee %></p>
+        <p><%= @fishing_park.children_tour_fee %></p>
+        <hr>
+        <p><%= link_to 'この海釣り公園のホームページへ', @fishing_park.body, target: :_blank %></p>
+        <hr>
       </div>
     </div>
-  </div>
-  
-   <div class="container">
-        <!----評価レビューをrenderで部分テンプレート--->
-        <%= render 'reviews/form', review: @review, fishing_park: @fishing_park %>
-        
-  </div>
-    <div class="col-md-12 text-center"><br><br><br>
-    <label><h2>地図</h2></label><hr><br><br>
-      <h2><%= link_to 'この地図のGoogleMapへ', @fishing_park.map_body, target: :_blank %></h2>
-      <hr>
-      <p><%= attachment_image_tag @fishing_park, :map_image, size:'1300x1000' %></p>
-
+    <%= render 'reviews/form', review: @review, fishing_park: @fishing_park %>
   </div>

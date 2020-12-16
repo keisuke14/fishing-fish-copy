@@ -1,6 +1,12 @@
 class FishingParksController < ApplicationController
   before_action :authenticate_user!
 
+  def fish
+    @fishing_park = FishingPark.find(params[:id])
+    @fishing_parks = FishingPark.all
+    @fishing_parks = FishingPark.page(params[:page]).reverse_order
+  end
+
   def rank
     #番号の多い順に並び替え、表示する最大数を8個に指定する。最後にpluckでfishing_park_idカラムのみを数字で取り出すように指定。
     @all_ranks = FishingPark.find(Favorite.group(:fishing_park_id).order('count(fishing_park_id) desc').limit(8).pluck(:fishing_park_id))
@@ -59,7 +65,7 @@ end
 
   private
   def fishing_park_params
-    params.require(:fishing_park).permit(:name, :address, :fee, :children_fee, :image, :map_image, :tour_fee, :children_tour_fee, :body, :map_body)
+    params.require(:fishing_park).permit(:name, :address, :fishing_fee, :fishing_children_fee, :image, :map_image, :tour_fee, :children_tour_fee, :body, :fish_body, :map_body)
   end
 
   # def user_admin
