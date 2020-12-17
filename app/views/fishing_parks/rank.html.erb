@@ -1,7 +1,7 @@
-  <div class="container"><br><br><br><br><br>
+  <div class="container">
     <h1>いいね多いランキング</h1><br>
   </div>
-  <div class="text-center"><br><br>
+  <div class="text-center">
     <% @all_ranks.each do |fishing_park| %>
       <div class="row">
         <%= link_to fishing_park_path(fishing_park.id) do %>
@@ -10,24 +10,24 @@
           </div>
           <div class="col-md-5">
             <div style="height: 40px;">
-              <p><h4>名称 ： <%= fishing_park.name %></p></h4>
+              <p>名称 ： <%= fishing_park.name %></p>
             </div>
             <div style="height: 40px;">
-              <p><h4>住所 ： <%= fishing_park.address %></p></h4>
+              <p>住所 ： <%= fishing_park.address %></p>
             </div>
-            <div style="height: 40px;">
+            <div style="height: 60px;">
               <h4>料金</h4>
-              <p><h4><%= fishing_park.fishing_fee %></p></h4>
+              <p><%= fishing_park.fishing_fee %></p>
             </div>
-            <div style="height: 50px;"><br>
-              <p><h4><%= fishing_park.fishing_children_fee %></p></h4>
+            <div style="height: 50px;">
+              <p><%= fishing_park.fishing_children_fee %></p>
             </div>
           </div>
           <div class="col-md-4">
             <div style="height: 50px;">
               <h4>入園料(見学の人)</h4>
-              <p><h4><%= fishing_park.tour_fee %></p></h4>
-              <p><h4><%= fishing_park.children_tour_fee %></p></h4>
+              <p><%= fishing_park.tour_fee %></p>
+              <p><%= fishing_park.children_tour_fee %></p>
             </div>
           </div>
         <% end %><br><br><br><br><br><br><br>
