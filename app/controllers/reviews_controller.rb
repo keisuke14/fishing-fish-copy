@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
     else
       # renderはアクションを返さないため変数が足りているかを確認する
       @fishing_park = FishingPark.find(params[:fishing_park_id])
+      #@fishing_park = FishingPark.find(params[:id]
+      @reviews = @fishing_park.reviews.page(params[:page]).per(2)
       render "fishing_parks/show"
     end
   end

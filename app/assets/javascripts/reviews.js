@@ -5,8 +5,8 @@ const stars = document.querySelector(".ratings").children;
 const ratingValue = document.getElementById("rating-value");
 // id = "rating-value-display"の要素を取得
 const ratingValueDisplay = document.getElementById("rating-value-display");
-// indexという変数を定義
-let index;
+// index_of_star_clickという変数を定義
+let index_of_star_click;
 console.log(stars)
 
 // reveiwの投稿ページに遷移するとstars.lengthの値（5）だけ繰り返し
@@ -35,7 +35,7 @@ for(let i=0; i<stars.length; i++){
 		ratingValue.value = i+1;
 		ratingValueDisplay.textContent = ratingValue.value;
 		// indexにクリックされた星の番号を代入
-		index = i;
+		index_of_star_click = i;
 	})
 	// 星からカーソルが離れたときに実行される関数
 	stars[i].addEventListener("mouseout",function(){
@@ -45,7 +45,7 @@ for(let i=0; i<stars.length; i++){
 			stars[j].classList.remove("fa-star");
 			stars[j].classList.add("fa-star-o");
 		}
-		for(let j=0; j<=index; j++){
+		for(let j=0; j<=index_of_star_click; j++){
 			// クリックされている星まで塗りつぶす
 			stars[j].classList.remove("fa-star-o");
 			stars[j].classList.add("fa-star");

@@ -65,8 +65,12 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'refile-mini_magick'
+# ページング機能
 gem 'kaminari','~> 1.2.1'
+# 環境変数を管理
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+# バリデーション
+gem 'rails-i18n'

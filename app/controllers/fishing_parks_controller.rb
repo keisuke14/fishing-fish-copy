@@ -3,8 +3,8 @@ class FishingParksController < ApplicationController
 
   def fish
     @fishing_park = FishingPark.find(params[:id])
-    @fishing_parks = FishingPark.all
-    @fishing_parks = FishingPark.page(params[:page]).reverse_order
+    #@fishing_parks = FishingPark.all
+    @fishing_parks = FishingPark.page(params[:page]).per(5)
   end
 
   def rank
@@ -29,16 +29,16 @@ class FishingParksController < ApplicationController
   end
 
   def index
-    @fishing_parks = FishingPark.all
+    #@fishing_parks = FishingPark.all
     @fishing_park = FishingPark.new
     # kaminariでページ機能をつけるための記述
-    @fishing_parks = FishingPark.page(params[:page]).reverse_order
+    @fishing_parks = FishingPark.page(params[:page]).per(4)
   end
 
   def show
     @fishing_park = FishingPark.find(params[:id])
     @review = Review.new
-    @reviews = @fishing_park.reviews
+    @reviews = @fishing_park.reviews.page(params[:page]).per(2)
   end
 
   def edit

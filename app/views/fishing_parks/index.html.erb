@@ -1,5 +1,5 @@
   <div class="container">
-    <h1>海釣り公園一覧</h1><br><br>
+    <h1>海釣り公園一覧</h1>
     <% @fishing_parks.each do |fishing_park| %>
       <div class="row">
         <%= link_to fishing_park_path(fishing_park.id) do %>
@@ -8,17 +8,17 @@
           </div>
           <div class="col-md-5">
             <div style="height: 40px;">
-              <p><h4>名称 ： <%= fishing_park.name %></p>
+              <p>名称 ： <%= fishing_park.name %></p>
             </div>
             <div style="height: 40px;">
-              <p><h4>住所 ： <%= fishing_park.address %></p>
+              <p>住所 ： <%= fishing_park.address %></p>
             </div>
             <div style="height: 50px;">
               <h4>料金</h4>
-              <p><h4><%= fishing_park.fishing_fee %></p>
+              <p><%= fishing_park.fishing_fee %></p>
             </div>
             <div style="height: 50px;"><br>
-              <p><h4><%= fishing_park.fishing_children_fee %></p>
+              <p><%= fishing_park.fishing_children_fee %></p>
             </div>
           </div>
           <div class="col-md-4">
@@ -28,7 +28,7 @@
               <p><%= fishing_park.children_tour_fee %></p>
             </div>
           </div>
-        <% end %><br><br><br><br><br><br><br>
+        <% end %><br><br><br><br><br>
 
         <!--renderでいいね機能を部分テンプレート-->
         <div id="favorite_<%= fishing_park.id %>">
