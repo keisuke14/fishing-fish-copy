@@ -1,0 +1,37 @@
+
+  <!--indexの情報を@fishing_parkでもってくる-->
+  <div class="container-fluid">
+  	<div class="row sampleRow">
+  		<div class="col-xs-12 col-md-3">
+        <div style ='margin-left:100px'>
+          <%= attachment_image_tag @fishing_park, :image, size:'260x260' %>
+          <!--renderでいいね機能を部分テンプレート-->
+          <div id="favorite_<%= @fishing_park.id %>">
+            <%= render partial: 'fishing_parks/favorite', locals: { fishing_park: @fishing_park} %>
+          </div>
+          <hr>
+        </div>
+  		</div>
+  		<div class="col-xs-12 col-md-9">
+
+    		<div class="col-md-6 text-center">
+          <h1><%= @fishing_park.name %></h1>
+          <p>名称 ： <%= @fishing_park.name %></p>
+          <hr>
+          <p>住所 ： <%= @fishing_park.address %></p>
+          <hr>
+          <p>料金</p>
+          <p><%= @fishing_park.fishing_fee %></p>
+          <p><%= @fishing_park.fishing_children_fee %></p>
+          <hr>
+          <p>入園料(見学の人)</p>
+          <p><%= @fishing_park.tour_fee %></p>
+          <p><%= @fishing_park.children_tour_fee %></p>
+          <hr>
+          <p><%= link_to 'この海釣り公園のホームページへ', @fishing_park.body, target: :_blank %></p>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <%= render 'reviews/form', review: @review, fishing_park: @fishing_park %>
+  </div>

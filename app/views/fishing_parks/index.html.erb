@@ -1,0 +1,80 @@
+  <div class="container">
+    <h1>海釣り公園一覧</h1>
+    <% @fishing_parks.each do |fishing_park| %>
+      <div class="row">
+        <%= link_to fishing_park_path(fishing_park.id) do %>
+          <div class="col-md-3">
+            <%= attachment_image_tag fishing_park, :image, size:'180x180' %>
+          </div>
+          <div class="col-md-5">
+            <div style="height: 40px;">
+              <p>名称 ： <%= fishing_park.name %></p>
+            </div>
+            <div style="height: 40px;">
+              <p>住所 ： <%= fishing_park.address %></p>
+            </div>
+            <div style="height: 50px;">
+              <h4>料金</h4>
+              <p><%= fishing_park.fishing_fee %></p>
+            </div>
+            <div style="height: 50px;"><br>
+              <p><%= fishing_park.fishing_children_fee %></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div style="height: 40px;">
+              <h4>入園料(見学の人)</h4>
+              <p><%= fishing_park.tour_fee %></p>
+              <p><%= fishing_park.children_tour_fee %></p>
+            </div>
+          </div>
+        <% end %><br><br><br><br><br>
+
+        <!--renderでいいね機能を部分テンプレート-->
+        <div id="favorite_<%= fishing_park.id %>">
+           <%= render partial: 'favorite', locals: { fishing_park: fishing_park} %>
+        </div>
+
+        <% if user_signed_in? %><br><br>
+          <% if current_user.admin? %>
+            <%= link_to "編集", edit_fishing_park_path(fishing_park.id) %>
+            <%= link_to "削除する", fishing_park_path(fishing_park.id), method: :delete, "data-confirm" => "削除しますか？" %>
+          <% end %>
+        <% end %>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+
+  <%= paginate @fishing_parks %>
+
+  <div class="container"><br>
+  <!--管理者のみ投稿を表示させる記述-->
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= form_with model: @fishing_park, local:true do |f| %>
+          <label>image</label><br>
+            <p><%= f.attachment_field :image %></p>
+          <label>address</label>
+            <p><%= f.text_field :address %></p>
+          <label>name</label>
+            <p><%= f.text_field :name %></p>
+           <label>fishing_fee</label>
+            <p><%= f.text_field :fishing_fee %></p>
+          <label>fishing_children_fee</label>
+            <p><%= f.text_field :fishing_children_fee %></p>
+          <label>tour_fee</label>
+            <p><%= f.text_field :tour_fee %></p>
+          <label>children_tour_fee</label>
+            <p><%= f.text_field :children_tour_fee %></p>
+          <label>サイトURL</label>
+            <p><%= f.text_field :body %></p>
+          <label>Map:URL</label>
+            <p><%= f.text_field :map_body %></p>
+          <label>image</label><br>
+            <p><%= f.attachment_field :map_image %></p>
+          <%= f.submit 'Create' %>
+        <% end %>
+     <% end %>
+    <% end %>
+  </div>
