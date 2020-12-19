@@ -24,10 +24,6 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = Uglifier.new(harmony: true)
-<<<<<<< HEAD
-=======
-
->>>>>>> e8dea1f81bc4bfa4aecaf0c8edf4c7bd0ea8cef2
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
