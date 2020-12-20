@@ -65,20 +65,6 @@
           </tr>
         </tbody>
       </table>
-
-
-      <div class="container"><br>
-      <!--管理者のみ投稿を表示させる記述-->
-        <% if user_signed_in? %>
-          <% if current_user.admin? %>
-            <%= form_with model: @fishing_park, local:true do |f| %>
-              <label>fishURL</label><br>
-                <p><%= f.text_field :fish_body %></p>
-              <%= f.submit 'Create' %>
-            <% end %>
-         <% end %>
-        <% end %>
-      </div>
     </div>
   </div
 
