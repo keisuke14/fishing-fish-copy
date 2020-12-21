@@ -1,82 +1,71 @@
-  <!--<header class="navbar navbar-dark" style="background-color:#00d5ff;">-->
-    <!--<div class="container">-->
-    <!--  <ul class="nav navbar-nav navbar-left">-->
-    <!--    <%= image_tag"logo (1).png", size: "240x90" %>-->
-    <!--  </ul>-->
+  <header class="navbar navbar-dark" style="background-color:#00d5ff;">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-left">
+        <%= image_tag"logo (1).png", size: "240x90" %>
+      </ul>
 
-    <!--  <div class="navbar-header">-->
-    <!--    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
-    <!--      <span class="sr-only">Toggle navigation</span>-->
-    <!--      <span class="icon-bar"></span>-->
-    <!--      <span class="icon-bar"></span>-->
-    <!--      <span class="icon-bar"></span>-->
-    <!--    </button>-->
-    <!--  </div>-->
+      <nav class="spmenu navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between">
+        <button  type="button" data-toggle="modal" data-target="#menuModal" aria-label="Toggle navigation">
+          <%= image_tag 'Hamburger.png', style: "width: 30px; height: 30px;" %>
+        </button>
+      </nav>
 
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between">
-  <a class="navbar-brand" href="#" >
-    <span>サンプル</span>
-  </a>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Top <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Products</a>
-      </li>
-    </ul>
-  </div>
-  <button class="btn btn-link d-sm-none" type="button" data-toggle="modal" data-target="#menuModal" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
+      <div class="modal fade fullscreen" id="menuModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-content">
+          <div class="modal-header">
+           <h5 class="modal-title">メニュー</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">×</span>
+           </button>
+          </div>
+          <div class="modal-body">
+            <ul style="list-style-type:none;">
+              <% if user_signed_in? %>
+                <li><%= link_to 'マイページ', user_path(current_user), class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to '釣り一覧', fishing_parks_path, class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to '魚一覧', fish_fishing_park_path(current_user), class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to 'ランキング', rank_fishing_parks_path(current_user), class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn" %></li>
+              <% else %>
+                <li><%= link_to 'About', about_path, class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to 'Top', root_path, class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to '新規登録', new_user_registration_path, class: "btn btn-default navbar-btn"%></li>
+                <li><%= link_to 'ログイン', new_user_session_path, class: "btn btn-default navbar-btn"%></li>
+              <% end %>
 
-<div class="modal fade fullscreen" id="menuModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-       <h5 class="modal-title">Modal title</h5>
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-         <span aria-hidden="true">×</span>
-       </button>
+              <% if user_signed_in? %>
+                <%= form_with url: search_fishing_parks_path, method: :get, local: true do |f| %>
+                  <%= text_field_tag :search_word %>
+                  <%= submit_tag '検索', :name => nil %>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <ul style="list-style-type:none;">
-          <li><a href="#">Top</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Products</a></li>
+
+      <nav class="pcmenu">
+      　<ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to 'マイページ', user_path(current_user), class: "btn btn-default navbar-btn" %></li>
+            <li><%= link_to '釣り一覧', fishing_parks_path, class: "btn btn-default navbar-btn" %></li>
+            <li><%= link_to '魚一覧', fish_fishing_park_path(current_user), class: "btn btn-default navbar-btn" %></li>
+            <li><%= link_to 'ランキング', rank_fishing_parks_path(current_user), class: "btn btn-default navbar-btn" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn" %></li>
+          <% else %>
+            <li><%= link_to 'About', about_path, class: "btn btn-default navbar-btn" %></li>
+            <li><%= link_to 'Top', root_path, class: "btn btn-default navbar-btn" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "btn btn-default navbar-btn"%></li>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "btn btn-default navbar-btn"%></li>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <%= form_with url: search_fishing_parks_path, method: :get, local: true do |f| %>
+              <%= text_field_tag :search_word %>
+              <%= submit_tag '検索', :name => nil %>
+            <% end %>
+          <% end %>
         </ul>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.fullscreen -->
-
-      <!--<nav>-->
-      <!--　<ul class="nav navbar-nav navbar-right">-->
-      <!--    <% if user_signed_in? %>-->
-      <!--      <li><%= link_to 'マイページ', user_path(current_user), class: "btn btn-default navbar-btn" %></li>-->
-      <!--      <li><%= link_to '釣り一覧', fishing_parks_path, class: "btn btn-default navbar-btn" %></li>-->
-      <!--      <li><%= link_to '魚一覧', fish_fishing_park_path(current_user), class: "btn btn-default navbar-btn" %></li>-->
-      <!--      <li><%= link_to 'ランキング', rank_fishing_parks_path(current_user), class: "btn btn-default navbar-btn" %></li>-->
-      <!--      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn" %></li>-->
-      <!--    <% else %>-->
-      <!--      <li><%= link_to 'About', about_path, class: "btn btn-default navbar-btn" %></li>-->
-      <!--      <li><%= link_to 'Top', root_path, class: "btn btn-default navbar-btn" %></li>-->
-      <!--      <li><%= link_to '新規登録', new_user_registration_path, class: "btn btn-default navbar-btn"%></li>-->
-      <!--      <li><%= link_to 'ログイン', new_user_session_path, class: "btn btn-default navbar-btn"%></li>-->
-      <!--    <% end %>-->
-
-      <!--    <% if user_signed_in? %>-->
-      <!--      <%= form_with url: search_fishing_parks_path, method: :get, local: true do |f| %>-->
-      <!--        <%= text_field_tag :search_word %>-->
-      <!--        <%= submit_tag '検索', :name => nil %>-->
-      <!--      <% end %>-->
-      <!--    <% end %>-->
-      <!--  </ul>-->
-      <!--</nav>-->
-  <!--  </div>-->
-  <!--</header>-->
+      </nav>
+    </div>
+  </header>
