@@ -2,8 +2,8 @@
   <!--indexの情報を@fishing_parkでもってくる-->
   <div class="container-fluid">
   	<div class="row sampleRow">
-  		<div class="col-xs-12 col-md-3">
-        <div style ='margin-left:100px'>
+  		<div class="col-xs-12 col-md-3" >
+        <div style ='width: 100%; margin: 0 auto'>
           <%= attachment_image_tag @fishing_park, :image, size:'260x260' %>
           <!--renderでいいね機能を部分テンプレート-->
           <div id="favorite_<%= @fishing_park.id %>">
@@ -34,4 +34,13 @@
       </div>
     </div>
     <%= render 'reviews/form', review: @review, fishing_park: @fishing_park %>
+
+    <div class="col-xs-12 col-md-12 text-center">
+      <label><h2>地図</h2></label>
+      <hr>
+      <h2><%= link_to 'この地図のGoogleMapへ', @fishing_park.map_body, target: :_blank %></h2>
+      <hr>
+      <p><%= attachment_image_tag @fishing_park, :map_image %></p>
+    </div>
+
   </div>

@@ -45,7 +45,7 @@
       <hr>
     <% end %>
   </div>
-
+<!---ページング機能-->
   <%= paginate @fishing_parks %>
 
   <div class="container"><br>
@@ -53,7 +53,7 @@
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <%= form_with model: @fishing_park, local:true do |f| %>
-          <label>image</label><br>
+          <label>image</label>
             <p><%= f.attachment_field :image %></p>
           <label>address</label>
             <p><%= f.text_field :address %></p>
@@ -71,7 +71,7 @@
             <p><%= f.text_field :body %></p>
           <label>Map:URL</label>
             <p><%= f.text_field :map_body %></p>
-          <label>image</label><br>
+          <label>Map:image</label>
             <p><%= f.attachment_field :map_image %></p>
           <%= f.submit 'Create' %>
         <% end %>

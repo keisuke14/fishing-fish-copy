@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--width=device-widthで、横幅をデバイスのサイズに合わせる、initial-scale=1は、倍率を指定する、shrink-to-fit=noは、iOS9でViewが崩れても、正常に表示できるようにする。-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>FishingFish</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!--星の画像をつけるために使用-->
     <script src="https://kit.fontawesome.com/838216ec5f.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

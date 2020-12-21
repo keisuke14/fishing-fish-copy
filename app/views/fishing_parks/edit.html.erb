@@ -1,7 +1,8 @@
   <div class="text-center"><br><br><br><br>
-   <h1>なにもありません</h1>
+   <h1>No Message</h1>
   </div>
   <div class="container">
+    <!--海釣り公園の情報を変更する内容-->
     <% if user_signed_in? %>
       <% if current_user.admin? %>
           <%= form_with model: @fishing_park, local:true do |f| %>
@@ -23,7 +24,7 @@
               <p><%= f.text_field :body %></p>
             <label>Map:URL</label>
               <p><%= f.text_field :map_body %></p>
-            <label>image</label><br>
+            <label>Map:image</label><br>
               <p><%= f.attachment_field :map_image %></p>
             <%= f.submit 'Update' %>
           <% end %>
