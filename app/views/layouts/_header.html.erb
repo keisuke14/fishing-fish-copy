@@ -1,21 +1,22 @@
   <header class="navbar navbar-dark" style="background-color:#00d5ff;">
     <div class="container">
-      <ul class="nav navbar-nav navbar-left">
-        <%= image_tag"logo (1).png", size: "240x90" %>
-      </ul>
 
       <nav class="spmenu navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between">
-        <button  type="button" data-toggle="modal" data-target="#menuModal" aria-label="Toggle navigation">
-          <%= image_tag 'Hamburger.png', style: "width: 30px; height: 30px;" %>
-        </button>
+        <ul class="pull-left">
+          <%= image_tag"logo (1).png", size: "120x90" %>
+        </ul>
+        <ul class="pull-right">
+          <button  type="button" data-toggle="modal" data-target="#menuModal" aria-label="Toggle navigation">
+            <%= image_tag 'Hamburger.png', style: "width: 30px; height: 30px;" %>
+          </button>
+        </ul>
       </nav>
-
       <div class="modal fade fullscreen" id="menuModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-content">
           <div class="modal-header">
            <h5 class="modal-title">メニュー</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">×</span>
+             <span aria-hidden="true"></span>
            </button>
           </div>
           <div class="modal-body">
@@ -43,8 +44,12 @@
           </div>
         </div>
       </div>
+    </ul>
 
-      <nav class="pcmenu">
+      <nav class="pcmenu">       
+        <ul class="nav navbar-nav navbar-left">
+          <%= image_tag"logo (1).png", size: "240x90" %>
+        </ul>
       　<ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to 'マイページ', user_path(current_user), class: "btn btn-default navbar-btn" %></li>

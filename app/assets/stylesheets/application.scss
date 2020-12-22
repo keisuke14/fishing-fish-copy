@@ -98,3 +98,11 @@
      display: none;
   }
 }
+@media (max-width:320px) {
+  .spmenu {
+     display: block;
+  }
+  .pcmenu {
+     display: none;
+  }
+}

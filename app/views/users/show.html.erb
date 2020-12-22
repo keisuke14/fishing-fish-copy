@@ -12,7 +12,12 @@
           <th><%= @user.email %></th>
            </tr>
       </table>
-      <th><%= link_to "User編集", edit_user_path, class: 'btn btn-primary' %></th>
-      <th><%= link_to "退会ヘ進む", quit_path, class: 'btn btn-danger' %></th>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+        <% else %>
+          <th><%= link_to "User編集", edit_user_path, class: 'btn btn-primary' %></th>
+          <th><%= link_to "退会ヘ進む", quit_path, class: 'btn btn-danger' %></th>
+        <% end %>
+      <% end %>
     </div>
   </div>
