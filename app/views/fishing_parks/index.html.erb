@@ -1,5 +1,7 @@
   <div class="container">
     <h1>海釣り公園一覧</h1>
+  </div>
+  <div class="text-center">
     <% @fishing_parks.each do |fishing_park| %>
       <div class="row">
         <%= link_to fishing_park_path(fishing_park.id) do %>
@@ -44,9 +46,9 @@
       </div>
       <hr>
     <% end %>
+    <!---ページング機能-->
+      <%= paginate @fishing_parks %>
   </div>
-<!---ページング機能-->
-  <%= paginate @fishing_parks %>
 
   <div class="container"><br>
   <!--管理者のみ投稿を表示させる記述-->
