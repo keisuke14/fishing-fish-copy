@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+    models:
+      user: ユーザー
+    devise:
+    errors:
+      messages:
+        not_saved:
+          one: エラーが発生したため %{resource} は保存されませんでした。
+          other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"

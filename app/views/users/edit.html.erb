@@ -1,12 +1,22 @@
  <div class="container">
+    <% if @user.errors.any? %>
+      <div class="notification is-danger">
+        <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="col-xs-3">
       <h2>マイページ編集</h2>
       <h3>登録情報</h3>
       <%= form_with model: @user, local:true do |f| %>
         <table class="table table-bordered">
-          <%= f.label :name %><br>
+          <%= f.label :名前 %><br>
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %><br><br>
-          <%= f.label :email %><br>
+          <%= f.label :メールアドレス %><br>
           <%= f.text_field :email, autofocus: true, autocomplete: "email" %><br><br>
           <%= f.submit '変更完了', class: "btn btn-primary" %>
         </table>

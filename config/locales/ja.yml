@@ -1,11 +1,23 @@
-# バリデーション日本語化
-ja:
-# RubyとSQLの翻訳機
-  activerecord:
-  # 引数に属性名を指定することで属性名に対する属性値を取得することが出来る
-    attributes:
-    # モデル名
-      review:
-      # カラム名：　日本語にしたい言葉
-        score: 星
-        content: 内容
+  # バリデーション日本語化
+  ja:
+  # RubyとSQLの翻訳機
+    activerecord:
+    # 引数に属性名を指定することで属性名に対する属性値を取得することが出来る
+      attributes:
+      # モデル名
+        review:
+        # カラム名：　日本語にしたい言葉
+          score: 星
+          content: 内容
+  ja:
+    # RubyとSQLの翻訳機
+    activerecord:
+    # 引数に属性名を指定することで属性名に対する属性値を取得することが出来る
+      attributes:
+      # モデル名
+        user:
+        # カラム名：　日本語にしたい言葉
+          name: 名前
+          email: メールアドレス
+          password: パスワード
+          Password confirmation: パスワード再入力
