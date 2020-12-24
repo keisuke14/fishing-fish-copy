@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_101513) do
+ActiveRecord::Schema.define(version: 2020_12_24_100615) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_101513) do
     t.text "fish_body"
     t.string "fishing_fee"
     t.string "fishing_children_fee"
+    t.integer "user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
