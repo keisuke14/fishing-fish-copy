@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get '/home/about' => 'home#about', as: 'about'
   get '/users/quit' => 'users#quit', as: 'quit'
-  
+  get '/fish' => 'fishing_parks#fish'
 
 
   resources :fishing_parks do

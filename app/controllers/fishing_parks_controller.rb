@@ -2,9 +2,9 @@ class FishingParksController < ApplicationController
   before_action :authenticate_user!
 
   def fish
-    @fishing_park = FishingPark.find(params[:id])
+    # @fishing_park = FishingPark.find(params[:id])
     #@fishing_parks = FishingPark.all
-    @fishing_parks = FishingPark.page(params[:page]).per(5)
+    # @fishing_parks = FishingPark.page(params[:page]).per(5)
   end
 
   def rank
