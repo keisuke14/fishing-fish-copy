@@ -1,9 +1,8 @@
   <div class="text-center"><br><br><br><br><br><br><br><br>
-      <h3><strong>本当に退会しますか</strong></h3>
-      <p>退会すると、会員登録情報の削除や</p>
-      <p>当サイトが利用できなくなってしまいます。</p>
-      <p>退会する場合は、「退会する」をクリックしてください。</p>
-      <%= link_to "退会しない", user_path(current_user), class: 'btn btn-primary' %>
-      <%= link_to "退会する", user_path(current_user), method: :delete, "data-confirm" => "本当に退会しますか？", class: 'btn btn-danger' %>
-    </div>
+    <h3><strong>本当に退会しますか</strong></h3>
+    <p>退会すると、会員登録情報の削除や</p>
+    <p>当サイトが利用できなくなってしまいます。</p>
+    <p>退会する場合は、「退会する」をクリックしてください。</p>
+    <%= link_to "退会しない", user_path(current_user), class: 'btn btn-primary' %>
+    <%= link_to "退会する", user_path(current_user), method: :delete, "data-confirm" => "本当に退会しますか？", class: 'btn btn-danger' %>
   </div>

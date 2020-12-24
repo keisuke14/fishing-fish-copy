@@ -5,29 +5,29 @@
     <!--海釣り公園の情報を変更する内容-->
     <% if user_signed_in? %>
       <% if current_user.admin? %>
-          <%= form_with model: @fishing_park, local:true do |f| %>
-            <label>image</label><br>
-              <p><%= f.attachment_field :image %></p>
-            <label>address</label>
-              <p><%= f.text_field :address %></p>
-            <label>name</label>
-              <p><%= f.text_field :name %></p>
-             <label>fishing_fee</label>
-              <p><%= f.text_field :fishing_fee %></p>
-            <label>fishing_children_fee</label>
-              <p><%= f.text_field :fishing_children_fee %></p>
-            <label>tour_fee</label>
-              <p><%= f.text_field :tour_fee %></p>
-            <label>children_tour_fee</label>
-              <p><%= f.text_field :children_tour_fee %></p>
-            <label>サイトURL</label>
-              <p><%= f.text_field :body %></p>
-            <label>Map:URL</label>
-              <p><%= f.text_field :map_body %></p>
-            <label>Map:image</label><br>
-              <p><%= f.attachment_field :map_image %></p>
-            <%= f.submit 'Update' %>
-          <% end %>
+        <%= form_with model: @fishing_park, local:true do |f| %>
+          <label>image</label><br>
+            <p><%= f.attachment_field :image %></p>
+          <label>address</label>
+            <p><%= f.text_field :address %></p>
+          <label>name</label>
+            <p><%= f.text_field :name %></p>
+           <label>fishing_fee</label>
+            <p><%= f.text_field :fishing_fee %></p>
+          <label>fishing_children_fee</label>
+            <p><%= f.text_field :fishing_children_fee %></p>
+          <label>tour_fee</label>
+            <p><%= f.text_field :tour_fee %></p>
+          <label>children_tour_fee</label>
+            <p><%= f.text_field :children_tour_fee %></p>
+          <label>サイトURL</label>
+            <p><%= f.text_field :body %></p>
+          <label>Map:URL</label>
+            <p><%= f.text_field :map_body %></p>
+          <label>Map:image</label><br>
+            <p><%= f.attachment_field :map_image %></p>
+          <%= f.submit 'Update' %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

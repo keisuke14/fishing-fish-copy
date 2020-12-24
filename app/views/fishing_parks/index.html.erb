@@ -1,6 +1,5 @@
   <div class="container">
     <h1>海釣り公園一覧</h1>
-
     <div class="text-center">
       <% @fishing_parks.each do |fishing_park| %>
         <div class="row">
@@ -48,7 +47,7 @@
       <% end %>
       <!---ページング機能-->
         <%= paginate @fishing_parks %>
-  </div>
+    </div>
   </div>
 
   <div class="container"><br>
