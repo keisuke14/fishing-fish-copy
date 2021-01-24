@@ -69,8 +69,11 @@ gem 'refile-mini_magick'
 gem 'kaminari','~> 1.2.1'
 # 環境変数を管理
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+  # gem 'mysql2'
+# end
 # バリデーション
 gem 'rails-i18n'
+group :test do
+  gem 'rspec-rails'
+end
