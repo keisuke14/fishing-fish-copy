@@ -74,6 +74,7 @@ gem 'dotenv-rails'
 # end
 # バリデーション
 gem 'rails-i18n'
-group :test do
+group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
